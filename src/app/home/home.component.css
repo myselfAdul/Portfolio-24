@@ -1,0 +1,25 @@
+.home-container {
+    /* Set the background image */
+    background-image: url('../../assets/images/bg.avif'); /* Ensure the image is in the right directory */
+    
+    /* Make the image cover the entire background */
+    background-size: cover;
+  
+    /* Ensure the image stays fixed while scrolling */
+    background-attachment: fixed;
+  
+    /* Position the image */
+    background-position: center;
+  
+    /* Set height to cover the full viewport */
+    height: 100vh;
+    width: 100vw;
+  
+    /* Optional: Additional styles for the container */
+    display: flex;
+    /* justify-content: center;
+    align-items: center; */
+    color: white; /* Text color on top of the background image */
+    text-align: center;
+  }
+  

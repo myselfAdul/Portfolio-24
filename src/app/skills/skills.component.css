@@ -1,0 +1,10 @@
+.card-hover {
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+  }
+  
+  .card-hover:hover {
+    transform: scale(1.05);
+  }
+  

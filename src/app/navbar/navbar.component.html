@@ -1,16 +1,142 @@
-<nav class="navbar w-full fixed top-0 left-0 flex justify-between items-center px-6 py-4 bg-black z-50">
-    <div class="logo">
-      <p class="text-3xl font-bold text-white">Lucas HooD</p>
-    </div>
-    <ul class="nav-links flex space-x-8 font-semibold text-white">
-      <li><a href="#" class="hover:text-gray-400">About</a></li>
-      <li><a href="#" class="hover:text-gray-400">Contact</a></li>
-      <li><a href="#" class="hover:text-gray-400">Skills</a></li>
+<nav
+  class="navbar w-full top-0 left-0 flex justify-between items-center px-10 py-4 z-50"
+>
+  <!-- Logo -->
+  <a routerLink="/home" class="logo">
+    <p class="text-3xl font-bold text-white">Lucas HooD</p>
+  </a>
+
+  <!-- Hamburger Menu Icon (visible on mobile) -->
+  <div class="lg:hidden">
+    <button
+      (click)="toggleMenu()"
+      class="flex items-center px-3 py-2 border rounded text-gray-200 border-gray-200 hover:text-white hover:border-white"
+    >
+      <svg
+        class="fill-current h-6 w-6"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <title>Menu</title>
+        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Navbar Links for larger screens -->
+  <ul class="nav-links hidden lg:flex space-x-8 font-semibold text-white">
+    <li>
+      <a
+        routerLink="/about"
+        routerLinkActive="text-gray-400"
+        class="hover:text-gray-400"
+        >About</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/contact"
+        routerLinkActive="text-gray-400"
+        class="hover:text-gray-400"
+        >Contact</a
+      >
+    </li>
+    <li>
+      <a
+        routerLink="/skills"
+        routerLinkActive="text-gray-400"
+        class="hover:text-gray-400"
+        >Skills</a
+      >
+    </li>
+  </ul>
+
+  <!-- Social Icons for larger screens -->
+  <div class="social-icons hidden lg:flex space-x-8 gap-5">
+    <a href="#"
+      ><img src="../../assets/images/github.png" alt="GitHub" class="h-6"
+    /></a>
+    <a href="#"
+      ><img src="../../assets/images/lin.png" alt="LinkedIn" class="h-6"
+    /></a>
+    <a href="#"
+      ><img src="../../assets/images/fb.png" alt="Facebook" class="h-6"
+    /></a>
+  </div>
+
+  <!-- Mobile Menu (Sliding in from left to right) -->
+  <div
+    [ngClass]="{
+      'translate-x-0': isMenuOpen,
+      '-translate-x-full': !isMenuOpen
+    }"
+    class="mobile-nav lg:hidden fixed top-0 left-0 w-4/6 h-screen bg-slate-500 z-40 transition-transform duration-500 ease-in-out"
+  >
+    <!-- Close Button -->
+    <!-- <div class="w-full flex justify-end p-4">
+        <button (click)="toggleMenu()" class="text-white text-2xl">
+          &#10005; 
+        </button>
+      </div> -->
+
+    <ul class="flex flex-col justify-between h-full text-white font-semibold">
+      <!-- Links at the top -->
+      <div class="flex flex-col h-full justify-center items-center">
+        <div class="lo px-10 py-20 border-2 border-dashed border-white">
+          <li class=" w-full p-5">
+            <a
+              routerLink="/about"
+              routerLinkActive="text-gray-400"
+              class="relative text-xl transition-all duration-500 ease-in-out transform hover:text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 hover:scale-110 hover:underline underline-offset-4"
+              (click)="toggleMenu()"
+              >About</a
+            >
+          </li>
+          <li class="w-full p-5">
+            <a
+              routerLink="/contact"
+              routerLinkActive="text-gray-400"
+              class="relative text-xl transition-all duration-500 ease-in-out transform hover:text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 hover:scale-110 hover:underline underline-offset-4"
+              (click)="toggleMenu()"
+              >Contact</a
+            >
+          </li>
+          <li class="w-full p-5">
+            <a
+              routerLink="/skills"
+              routerLinkActive="text-gray-400"
+              class="relative text-xl transition-all duration-500 ease-in-out transform hover:text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-red-500 hover:scale-110 hover:underline underline-offset-4"
+              (click)="toggleMenu()"
+              >Skills</a
+            >
+          </li>
+        </div>
+      </div>
+
+      <!-- Social Icons at the bottom -->
+      <div class="flex justify-center space-x-8 gap-5 mb-8">
+        <a href="#" class="group">
+          <img
+            src="../../assets/images/github.png"
+            alt="GitHub"
+            class="h-8 transition-transform duration-500 ease-in-out transform group-hover:rotate-45 group-hover:scale-125 filter group-hover:brightness-150"
+          />
+        </a>
+        <a href="#" class="group">
+          <img
+            src="../../assets/images/lin.png"
+            alt="LinkedIn"
+            class="h-8 transition-transform duration-500 ease-in-out transform group-hover:rotate-45 group-hover:scale-125 filter group-hover:brightness-150"
+          />
+        </a>
+        <a href="#" class="group">
+          <img
+            src="../../assets/images/fb.png"
+            alt="Facebook"
+            class="h-8 transition-transform duration-500 ease-in-out transform group-hover:rotate-45 group-hover:scale-125 filter group-hover:brightness-150"
+          />
+        </a>
+      </div>
     </ul>
-    <div class="social-icons flex space-x-8 gap-5">
-      <a href="#"><img src="../../assets/images/github.png" alt="GitHub" class="h-6"></a>
-      <a href="#"><img src="../../assets/images/lin.png" alt="LinkedIn" class="h-6"></a>
-      <a href="#"><img src="../../assets/images/fb.png" alt="Facebook" class="h-6"></a>
-    </div>
-  </nav>
-  
+  </div>
+</nav>
